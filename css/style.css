@@ -229,3 +229,10 @@ input[type=search] {
 .meter { display: inline-block; width: 80px; height: 8px; border-radius: 4px; background: var(--seq-0); overflow: hidden; flex: none; }
 .meter span { display: block; height: 100%; background: var(--seq-3); border-radius: 4px; }
 .tbl.compact td { padding: 3px 6px; }
+
+/* about dialog */
+.about { font-size: 13px; line-height: 1.55; }
+.about ul { padding-left: 18px; margin: 4px 0 8px; }
+.about li { margin: 4px 0; }
+.topbar .row-flex { flex-wrap: nowrap; }
+@media (max-width: 600px) { .badge-proto { display: none; } }

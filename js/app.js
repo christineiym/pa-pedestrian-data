@@ -45,8 +45,10 @@
   const typeLabel = (t) => (t === 'municipality' ? 'home-rule municipality' : t);
 
   // ---------- map ----------
-  const map = L.map('map', { zoomSnap: 0.5, preferCanvas: true });
+  // One shared canvas for ALL vector layers. Leaflet stacks each extra canvas renderer on top and it
+  // keeps swallowing clicks after its layers are removed — which broke map drill-down after any preview.
   const renderer = L.canvas({ padding: 0.5 });
+  const map = L.map('map', { zoomSnap: 0.5, renderer });
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors · boundaries: US Census',
     maxZoom: 19,
@@ -62,6 +64,7 @@
     tip.style.left = x + 'px'; tip.style.top = y + 'px';
   }
   const hideTip = () => { tip.hidden = true; };
+  $('#about-btn').addEventListener('click', () => $('#about-dialog').showModal());
 
   // ---------- OSM metrics → levels ----------
   function osmSums(ids) {

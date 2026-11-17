@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PA Pedestrian Data Coverage</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
   <header class="topbar">
@@ -13,7 +13,10 @@
       <h1>Pennsylvania pedestrian accessibility data coverage</h1>
       <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"></nav>
     </div>
-    <span class="badge-proto" title="Catalog entries other than OpenStreetMap are unverified candidates">Prototype · seed data</span>
+    <div class="row-flex">
+      <span class="badge-proto" title="Catalog entries other than OpenStreetMap and GTFS are unverified candidates">Prototype · seed data</span>
+      <button class="btn" id="about-btn">About &amp; sources</button>
+    </div>
   </header>
 
   <main class="layout">
@@ -34,7 +37,32 @@
     <div id="schema-body" class="dialog-body"></div>
   </dialog>
 
+  <dialog id="about-dialog" class="schema-dialog">
+    <form method="dialog" class="dialog-head">
+      <h2>About this dashboard</h2>
+      <button class="btn ghost" aria-label="Close">✕</button>
+    </form>
+    <div class="dialog-body about">
+      <p>This prototype shows <b>whether machine-readable pedestrian accessibility data exists</b> for each of Pennsylvania's 2,572 municipalities, and who publishes it. It measures data coverage, not whether the infrastructure itself is accessible.</p>
+      <h3>Caveats</h3>
+      <ul>
+        <li><b>OpenStreetMap coverage levels</b> ("partial" / "full") use uncalibrated placeholder thresholds; a sample audit in Pittsburgh and Philadelphia is planned.</li>
+        <li><b>Catalog datasets</b> other than OSM and GTFS (PennDOT, DVRPC, city datasets) are unverified candidates and are excluded from scores unless you opt in.</li>
+        <li><b>The paratransit area is derived</b> from the ADA minimum rule (¾ mile around non-commuter fixed bus routes and rail stations, 49 CFR 37.131) using GTFS. It is not any agency's official service area.</li>
+        <li><b>Transit data</b> comes from GTFS feeds listed in the Mobility Database; some listed feeds are expired (flagged in the feeds table).</li>
+      </ul>
+      <h3>Sources and licenses</h3>
+      <ul>
+        <li><b>OpenStreetMap</b> data © OpenStreetMap contributors, <a href="https://opendatacommons.org/licenses/odbl/" target="_blank" rel="noopener">ODbL</a>, via <a href="https://download.geofabrik.de/" target="_blank" rel="noopener">Geofabrik</a> and the Overpass API. Derived OSM metrics in this project are available under the ODbL.</li>
+        <li><b>Boundaries and population:</b> US Census Bureau 2023 cartographic boundary files and 2020 Census (public domain).</li>
+        <li><b>Transit:</b> GTFS feeds © the respective transit agencies, found via the <a href="https://mobilitydatabase.org" target="_blank" rel="noopener">Mobility Database</a>; each feed's source and license link is in <a href="data/transit_feeds.json" target="_blank">data/transit_feeds.json</a>.</li>
+        <li><b>Basemap:</b> OpenStreetMap standard tiles.</li>
+      </ul>
+      <p>Method, data model and roadmap: <a href="https://github.com/christineiym/pa-pedestrian-data" target="_blank" rel="noopener">GitHub repository</a> (README and PLAN.md).</p>
+    </div>
+  </dialog>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=5"></script>
 </body>
 </html>
