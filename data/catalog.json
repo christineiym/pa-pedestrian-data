@@ -1,0 +1,197 @@
+{
+  "version": "0.1",
+  "_notes": "PROTOTYPE SEED DATA. Except for OpenStreetMap (precomputed per municipality by scripts/osm_coverage.py), every dataset below is a CANDIDATE: existence, extent, endpoint and attribute coverage are assumptions to be verified. Attribute levels: 0 = none, 1 = partial, 2 = full. coverage.municipalities uses Census county-subdivision GEOIDs; coverage.counties uses county names.",
+  "state": {
+    "id": "pa",
+    "name": "Pennsylvania",
+    "bounds": [
+      [
+        39.72,
+        -80.52
+      ],
+      [
+        42.27,
+        -74.69
+      ]
+    ]
+  },
+  "datasets": [
+    {
+      "id": "osm",
+      "name": "OpenStreetMap pedestrian features",
+      "publisher": "OpenStreetMap contributors",
+      "level": "crowd",
+      "format": "Overpass API (JSON)",
+      "license": "ODbL",
+      "portal": "https://www.openstreetmap.org",
+      "machineReadable": true,
+      "verified": true,
+      "endpoint": {
+        "type": "overpass",
+        "url": "https://overpass-api.de/api/interpreter",
+        "mirrors": [
+          "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+          "https://overpass.kumi.systems/api/interpreter"
+        ]
+      },
+      "coverage": {
+        "statewide": true
+      },
+      "attributes": {},
+      "notes": "Levels are computed per municipality from a statewide OSM extract (scripts/osm_coverage.py); thresholds are in osmLevels() in js/app.js. \"Load OSM features\" previews live data via Overpass."
+    },
+    {
+      "id": "penndot-curb-ramps",
+      "name": "PennDOT curb ramp inventory (state routes)",
+      "publisher": "PennDOT",
+      "level": "state",
+      "format": "ArcGIS (to verify)",
+      "license": "to verify",
+      "portal": "https://data-pennshare.opendata.arcgis.com",
+      "machineReadable": true,
+      "verified": false,
+      "endpoint": null,
+      "coverage": {
+        "statewide": true
+      },
+      "attributes": {
+        "curb_ramps": 1,
+        "condition": 1
+      },
+      "notes": "Candidate. Assumed to cover state-owned routes only (hence partial). Confirm existence, public availability and fields."
+    },
+    {
+      "id": "dvrpc-ped-facilities",
+      "name": "DVRPC pedestrian facilities inventory",
+      "publisher": "Delaware Valley Regional Planning Commission",
+      "level": "regional",
+      "format": "ArcGIS / GeoJSON (to verify)",
+      "license": "to verify",
+      "portal": "https://catalog.dvrpc.org",
+      "machineReadable": true,
+      "verified": false,
+      "endpoint": null,
+      "coverage": {
+        "counties": [
+          "Philadelphia",
+          "Bucks",
+          "Chester",
+          "Delaware",
+          "Montgomery"
+        ]
+      },
+      "attributes": {
+        "sidewalks": 2,
+        "crossings": 2,
+        "curb_ramps": 2
+      },
+      "notes": "Candidate. Regional MPO inventory for SE PA; confirm layers (sidewalks / crosswalks / curb ramps) and vintage."
+    },
+    {
+      "id": "phl-planimetric",
+      "name": "Philadelphia planimetric sidewalks/curbs",
+      "publisher": "City of Philadelphia",
+      "level": "municipal",
+      "format": "to verify (OpenDataPhilly)",
+      "license": "to verify",
+      "portal": "https://opendataphilly.org",
+      "machineReadable": true,
+      "verified": false,
+      "endpoint": null,
+      "coverage": {
+        "municipalities": [
+          "4210160000"
+        ]
+      },
+      "attributes": {
+        "sidewalks": 2,
+        "width": 1
+      },
+      "notes": "Candidate. Polygon-style planimetrics typically give geometry (and derivable width) but not routable topology or accessibility attributes."
+    },
+    {
+      "id": "pgh-city-steps",
+      "name": "Pittsburgh City Steps",
+      "publisher": "City of Pittsburgh (via WPRDC)",
+      "level": "municipal",
+      "format": "to verify (CKAN / GeoJSON)",
+      "license": "to verify",
+      "portal": "https://data.wprdc.org",
+      "machineReadable": true,
+      "verified": false,
+      "endpoint": null,
+      "coverage": {
+        "municipalities": [
+          "4200361000"
+        ]
+      },
+      "attributes": {
+        "steps": 2,
+        "condition": 1
+      },
+      "notes": "Candidate. Public stairways inventory; confirm attributes (condition, length, handrails)."
+    },
+    {
+      "id": "alle-planimetric",
+      "name": "Allegheny County planimetric features",
+      "publisher": "Allegheny County",
+      "level": "county",
+      "format": "to verify",
+      "license": "to verify",
+      "portal": "https://data.wprdc.org",
+      "machineReadable": true,
+      "verified": false,
+      "endpoint": null,
+      "coverage": {
+        "counties": [
+          "Allegheny"
+        ]
+      },
+      "attributes": {
+        "sidewalks": 1
+      },
+      "notes": "Candidate. Confirm whether sidewalk edges are included and their vintage."
+    },
+    {
+      "id": "projectsidewalk-pgh",
+      "name": "Project Sidewalk (Pittsburgh deployment)",
+      "publisher": "Project Sidewalk / Makeability Lab",
+      "level": "crowd",
+      "format": "REST API (to verify)",
+      "license": "to verify",
+      "portal": "https://projectsidewalk.org",
+      "machineReadable": true,
+      "verified": false,
+      "endpoint": null,
+      "coverage": {
+        "municipalities": [
+          "4200361000"
+        ]
+      },
+      "attributes": {
+        "curb_ramps": 1,
+        "crossings": 1,
+        "surface": 1,
+        "condition": 1
+      },
+      "notes": "Candidate. Crowdsourced accessibility labels from street-level imagery; confirm deployment status and API extent."
+    },
+    {
+      "id": "municipal-ada-plans",
+      "name": "Municipal ADA transition plans / self-evaluations",
+      "publisher": "Individual municipalities (varies)",
+      "level": "municipal",
+      "format": "PDF / report (typical)",
+      "license": "varies",
+      "portal": null,
+      "machineReadable": false,
+      "verified": false,
+      "endpoint": null,
+      "coverage": {
+        "statewide": true
+      },
+      "attributes": {},
+      "notes": "Placeholder for the long tail: curb-ramp and sidewalk findings that exist only in documents. Counted in the catalog but contribute no machine-readable coverage."
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "version": "0.1",
+  "description": "Common pedestrian-accessibility attribute set used to score coverage. Loosely aligned with the OpenSidewalks (OSW) schema and OpenStreetMap tagging so that heterogeneous local/state datasets can be crosswalked to one vocabulary.",
+  "attributes": [
+    {
+      "id": "sidewalks",
+      "label": "Sidewalk network",
+      "short": "SW",
+      "description": "Sidewalk geometry (centerlines or polygons) with enough topology to route on.",
+      "osm": "highway=footway + footway=sidewalk (or sidewalk=* on streets)",
+      "field_hints": ["sidewalk", "sw_", "walk", "footway", "planimetric"]
+    },
+    {
+      "id": "crossings",
+      "label": "Crossings",
+      "short": "XW",
+      "description": "Marked/unmarked crosswalk locations or crossing segments.",
+      "osm": "footway=crossing, highway=crossing",
+      "field_hints": ["crossing", "crosswalk", "xwalk", "marking"]
+    },
+    {
+      "id": "curb_ramps",
+      "label": "Curb ramps",
+      "short": "CR",
+      "description": "Curb ramp / kerb presence and type at crossing ends.",
+      "osm": "kerb=lowered|flush|raised, barrier=kerb",
+      "field_hints": ["kerb", "curb", "ramp", "ada"]
+    },
+    {
+      "id": "width",
+      "label": "Width",
+      "short": "W",
+      "description": "Clear path width of the sidewalk.",
+      "osm": "width=*",
+      "field_hints": ["width", "wid"]
+    },
+    {
+      "id": "surface",
+      "label": "Surface",
+      "short": "SF",
+      "description": "Surface material (concrete, brick, asphalt, gravel...).",
+      "osm": "surface=*",
+      "field_hints": ["surface", "material", "surf"]
+    },
+    {
+      "id": "incline",
+      "label": "Slope / incline",
+      "short": "SL",
+      "description": "Running slope (and ideally cross slope).",
+      "osm": "incline=*",
+      "field_hints": ["incline", "slope", "grade"]
+    },
+    {
+      "id": "condition",
+      "label": "Condition",
+      "short": "CD",
+      "description": "Condition / smoothness / obstructions.",
+      "osm": "smoothness=*",
+      "field_hints": ["condition", "smooth", "cond", "rating", "score", "obstacle"]
+    },
+    {
+      "id": "tactile",
+      "label": "Tactile paving",
+      "short": "TP",
+      "description": "Detectable warning surfaces at crossings and ramps.",
+      "osm": "tactile_paving=*",
+      "field_hints": ["tactile", "detectable", "truncated", "dws"]
+    },
+    {
+      "id": "steps",
+      "label": "Steps / stairs",
+      "short": "ST",
+      "description": "Public stairs (barriers for wheelchair users; key in hilly cities).",
+      "osm": "highway=steps",
+      "field_hints": ["step", "stair"]
+    },
+    {
+      "id": "aps",
+      "label": "Accessible ped. signals",
+      "short": "APS",
+      "description": "Accessible pedestrian signals (audible/vibrotactile) at signalized crossings.",
+      "osm": "traffic_signals:sound=*, traffic_signals:vibration=*",
+      "field_hints": ["aps", "audible", "sound", "signal", "vibrat"]
+    }
+  ]
+}

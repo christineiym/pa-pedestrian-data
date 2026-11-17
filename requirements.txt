@@ -1,0 +1,6 @@
+geopandas>=1.0
+shapely>=2.1
+pyogrio
+osmium>=4.0
+numpy
+pandas
