@@ -1,6 +1,6 @@
 # PA pedestrian accessibility data coverage (prototype)
 
-**Live site:** https://christineiym.github.io/pa-pedestrian-data/
+**Live site:** https://christineiym.com/pa-pedestrian-data/
 
 A static dashboard showing which pedestrian accessibility data exists for all 2,572 Pennsylvania municipalities. You can group by county, population size or municipality type, preview datasets as map layers, inspect each dataset's schema, and export CSV. Fixed-route transit (GTFS) accessibility data and a derived ADA paratransit area are shown alongside. See [PLAN.md](PLAN.md) for goals, the data model, the method and next phases.
 
